@@ -1,29 +1,35 @@
-//Calculadora de Vitórias
-function matches(victory, defeat) {
-    let result = victory - defeat
-    return result
-  }
-  //Niveis 
-  function rank() {
-    let resultRank = matches(50, 20)
-    let nivel = ""
-    if (resultRank <= 10) {
-      nivel = "Ferro"
-    } else if (resultRank <= 20) {
-      nivel = "Bronze"
-    } else if (resultRank <= 50) {
-      nivel = "Prata"
-    } else if (resultRank <= 80) {
-      nivel = "Ouro"
-    } else if (resultRank <= 90) {
-      nivel = "Diamante"
-    } else if (resultRank <= 100) {
-      nivel = "Lendário"
-    } else if (resultRank >= 100) {
-      nivel = "Imortal"
+//json projeto
+//criando o heroi e os inimigos
+class Hero {
+    constructor(name, age, type) {
+        this.name = name;
+        this.age = age;
+        this.type = type;
     }
-  
-    return `O Herói tem de saldo de ${resultRank} e está no nível de ${nivel}`
-  }
-  
-  console.log(rank())
+
+    atacar() {
+        let attack;
+
+        switch (this.type) {
+            case "Mago":
+                attack = "usou magia";
+                break;
+            case "Guerreiro":
+                attack = "usou espada";
+                break;
+            case "Monge":
+                attack = "usou artes marciais";
+                break;
+            case "Ninja":
+                attack = "usou shuriken";
+                break;
+            default:
+                attack = "não possui um ataque definido";
+        }
+
+        return `O ${this.type} atacou usando ${attack}`;
+    }
+}
+
+let hero = new Hero("Mulher Maravilha", 30, "Guerreiro");
+console.log(hero.atacar());
